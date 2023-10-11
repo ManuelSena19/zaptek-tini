@@ -13,7 +13,7 @@ Widget bottomNavBar(){
     ),
     unselectedLabelStyle: GoogleFonts.inter(
       fontWeight: FontWeight.w400,
-      color: const Color.fromRGBO(26, 148, 255, 1),
+      color: const Color.fromRGBO(128, 128, 137, 1),
     ),
     showSelectedLabels: true,
     showUnselectedLabels: true,
