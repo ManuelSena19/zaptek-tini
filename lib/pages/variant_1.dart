@@ -23,11 +23,32 @@ class Variant1 extends StatefulWidget {
 }
 
 class _Variant1State extends State<Variant1> {
+  ScrollController scrollController = ScrollController();
+  double scrollPosition = 0;
+
+  scrollListener(){
+    setState(() {
+      scrollPosition = scrollController.position.pixels;
+    });
+  }
+  @override
+  void initState(){
+    scrollController.addListener(scrollListener);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(245, 245, 250, 1),
-      appBar: AppBar(
+      appBar: scrollPosition == 0
+        ? AppBar(
         title: Row(
           children: [
             Image.asset('assets/logo.png'),
@@ -53,12 +74,23 @@ class _Variant1State extends State<Variant1> {
           Image.asset('assets/nav_pill.png'),
           SizedBox(width: horizontalConverter(8, context)),
         ],
+      )
+      : AppBar(
+        title: Text(
+          'Sample restaurant',
+          style: GoogleFonts.inter(
+              fontWeight: FontWeight.w700, fontSize: 18),
+        ),
+        actions: [
+          Image.asset('assets/nav_pill.png'),
+          SizedBox(width: horizontalConverter(8, context)),
+        ],
       ),
       body: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: horizontalConverter(16, context)),
         child: ListView(
-          scrollDirection: Axis.vertical,
+          controller: scrollController,
           children: [
             Image.asset('assets/header.png'),
             SizedBox(height: verticalConverter(20, context)),
