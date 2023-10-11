@@ -17,21 +17,21 @@ Widget bottomNavBar(){
     ),
     showSelectedLabels: true,
     showUnselectedLabels: true,
-    items: const [
+    items: [
       BottomNavigationBarItem(
-        icon: Icon(Icons.home_outlined),
+        icon: Image.asset('assets/home.png'),
         label: 'Home',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.store_mall_directory_outlined),
+        icon: Image.asset('assets/store.png'),
         label: 'Stores',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.list_alt_outlined),
+        icon: Image.asset('assets/order.png'),
         label: 'Order',
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.person_outline),
+        icon: Image.asset('assets/profile.png'),
         label: 'Profile',
       ),
     ],
